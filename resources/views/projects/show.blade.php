@@ -19,6 +19,12 @@
 					@foreach ($project->tasks as $task)
 						<div class="card mb-3">{{ $task->body }}</div>
 					@endforeach
+					<div class="card mb-3">
+						<form action="{{ $project->path() . '/tasks' }}" method="POST">
+							@csrf
+							<input placeholder="Add a new task..." class="w-full" name="body">
+						</form>
+					</div>
 				</div>
 				<div>
 					<h2 class="text-lg text-grey font-normal mb-3">General Notes</h2>
@@ -27,7 +33,7 @@
 			</div>
 			
 		
-			<div class="lg:w-1/4 px-3">
+			<div class="lg:w-1/4 px-3 lg:py-8">
 				@include('projects.card')
 			</div>
 		</div>
